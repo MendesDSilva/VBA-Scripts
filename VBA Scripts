@@ -1,0 +1,61 @@
+Sub TratandoDados()
+
+    ' Olhar Coluna A'
+        'Se o valor for <> ""; Armazenar'
+        'Se for = ""; Colocar o Valor Armazenado'
+
+Dim Valor_Atual As String
+Dim Range1, Cell As Range
+Dim valor_numero As Double
+
+
+
+Set Range1 = Range("A2:A239")
+
+    For Each Cell In Range1
+            
+        If Cell.Value <> "" Then
+            Valor_Atual = Cell.Value
+        
+        Else
+            Cell.Value = Valor_Atual
+        
+        End If
+        
+    Next
+    
+    For Each Cell In Range1.Offset(0, 1)
+            
+        If Cell.Value <> "" Then
+            Valor_Atual = Cell.Value
+        
+        Else
+            Cell.Value = Valor_Atual
+    
+        End If
+        
+    Next
+    
+    For Each Cell In Range1.Offset(0, 3)
+            
+        If Cell.Value <> "" Then
+            valor_numero = Cell.Value
+        
+        Else
+            Cell.Value = valor_numero
+    
+        End If
+        
+        Cell.Style = "Currency"
+        
+    Next
+    
+     For Each Cell In Range1.Offset(0, 4)
+            
+            Cell.Value = Cell.Offset(0, -1).Value * Cell.Offset(0, -2).Value
+            Cell.Style = "Currency"
+        
+    Next
+    
+End Sub
+
